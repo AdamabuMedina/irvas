@@ -31,8 +31,9 @@ const modals = () => {
 
   function showModalBytime(selector, time) {
     setTimeout(() => {
-      document.querySelector("")
-    })
+      document.querySelector(selector).style.display = "block"
+      document.body.style.overflow = "hidden"
+    }, time)
   }
 
   bindModal(
@@ -42,6 +43,7 @@ const modals = () => {
   )
 
   bindModal(".phone_link", ".popup", ".popup .popup_close")
+  showModalBytime(".popup", 60000)
 }
 
 export default modals
