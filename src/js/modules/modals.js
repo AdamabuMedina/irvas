@@ -52,7 +52,7 @@ const modals = () => {
   bindModalEvents(".phone_link", ".popup", ".popup .popup_close")
 
   // Показываем модальное окно после определенного времени
-  showModalByTime(".popup", 60000)
+  // showModalByTime(".popup", 60000)
 }
 
 export default modals
