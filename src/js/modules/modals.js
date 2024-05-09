@@ -1,3 +1,5 @@
+// import { showModalByTime } from "./utils"
+
 const modals = () => {
   // Функция для закрытия модального окна и возвращения прокрутки фона
   const closeModal = (modal, windows) => {
@@ -6,17 +8,6 @@ const modals = () => {
     })
     modal.style.display = "none"
     document.body.style.overflow = ""
-  }
-
-  // Функция для отображения модального окна через определенное время
-  const showModalByTime = (selector, time) => {
-    setTimeout(() => {
-      const modal = document.querySelector(selector)
-      if (modal) {
-        modal.style.display = "block"
-        document.body.style.overflow = "hidden"
-      }
-    }, time)
   }
 
   // Функция для привязки событий открытия/закрытия модального окна к триггерам
