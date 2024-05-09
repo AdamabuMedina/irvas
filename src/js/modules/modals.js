@@ -1,6 +1,6 @@
 const modals = () => {
   // Функция для закрытия модального окна и возвращения прокрутки фона
-  const closeModal = modal => {
+  const closeModal = (modal, windows) => {
     windows.forEach(item => {
       item.style.display = "none"
     })
@@ -20,7 +20,12 @@ const modals = () => {
   }
 
   // Функция для привязки событий открытия/закрытия модального окна к триггерам
-  const bindModalEvents = (triggerSeletor, modalSeletor, closeSeletor) => {
+  const bindModalEvents = (
+    triggerSeletor,
+    modalSeletor,
+    closeSeletor,
+    closeClickOverlay = true
+  ) => {
     const triggers = document.querySelectorAll(triggerSeletor)
     const modal = document.querySelector(modalSeletor)
     const close = document.querySelector(closeSeletor)
@@ -41,12 +46,12 @@ const modals = () => {
     })
 
     // Добавляем обработчик клика на кнопку закрытия
-    close.addEventListener("click", () => closeModal(modal))
+    close.addEventListener("click", () => closeModal(modal, windows))
 
     // Добавляем обработчик клика на фон модального окна для закрытия
     modal.addEventListener("click", event => {
-      if (event.target === modal) {
-        closeModal(modal)
+      if (event.target === modal && closeClickOverlay) {
+        closeModal(modal, windows)
       }
     })
   }
@@ -59,6 +64,19 @@ const modals = () => {
   )
   bindModalEvents(".phone_link", ".popup", ".popup .popup_close")
   bindModalEvents(".popup_calc_btn", ".popup_calc", ".popup_calc_close")
+  bindModalEvents(".popup_calc_btn", ".popup_calc", ".popup_calc_close")
+  bindModalEvents(
+    ".popup_calc_button",
+    ".popup_calc_profile",
+    ".popup_calc_profile_close",
+    false
+  )
+  bindModalEvents(
+    ".popup_calc_profile_button",
+    ".popup_calc_end",
+    ".popup_calc_end_close",
+    false
+  )
 
   // Показываем модальное окно после определенного времени
   // showModalByTime(".popup", 60000)
