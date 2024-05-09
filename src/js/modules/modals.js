@@ -1,5 +1,7 @@
 // import { showModalByTime } from "./utils"
 
+import { calcScroll } from "./utils"
+
 const modals = () => {
   // Функция для закрытия модального окна и возвращения прокрутки фона
   const closeModal = (modal, windows) => {
@@ -8,6 +10,7 @@ const modals = () => {
     })
     modal.style.display = "none"
     document.body.style.overflow = ""
+    document.body.style.marginRight = `0px`
   }
 
   // Функция для привязки событий открытия/закрытия модального окна к триггерам
@@ -17,10 +20,11 @@ const modals = () => {
     closeSeletor,
     closeClickOverlay = true
   ) => {
-    const triggers = document.querySelectorAll(triggerSeletor)
-    const modal = document.querySelector(modalSeletor)
-    const close = document.querySelector(closeSeletor)
-    const windows = document.querySelectorAll("[data-modal]")
+    const triggers = document.querySelectorAll(triggerSeletor),
+      modal = document.querySelector(modalSeletor),
+      close = document.querySelector(closeSeletor),
+      windows = document.querySelectorAll("[data-modal]"),
+      scroll = calcScroll()
 
     // Проходимся по каждому триггеру и добавляем обработчик клика
     triggers.forEach(item => {
@@ -33,6 +37,7 @@ const modals = () => {
 
         modal.style.display = "block"
         document.body.style.overflow = "hidden"
+        document.body.style.marginRight = `${scroll}px`
       })
     })
 
