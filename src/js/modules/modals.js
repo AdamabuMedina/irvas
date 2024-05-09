@@ -1,6 +1,9 @@
 const modals = () => {
   // Функция для закрытия модального окна и возвращения прокрутки фона
   const closeModal = modal => {
+    windows.forEach(item => {
+      item.style.display = "none"
+    })
     modal.style.display = "none"
     document.body.style.overflow = ""
   }
@@ -21,11 +24,16 @@ const modals = () => {
     const triggers = document.querySelectorAll(triggerSeletor)
     const modal = document.querySelector(modalSeletor)
     const close = document.querySelector(closeSeletor)
+    const windows = document.querySelectorAll("[data-modal]")
 
     // Проходимся по каждому триггеру и добавляем обработчик клика
     triggers.forEach(item => {
       item.addEventListener("click", e => {
         e.preventDefault()
+
+        windows.forEach(item => {
+          item.style.display = "none"
+        })
 
         modal.style.display = "block"
         document.body.style.overflow = "hidden"
