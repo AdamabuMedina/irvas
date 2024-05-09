@@ -1,4 +1,10 @@
-const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
+const tabs = (
+  headerSelector,
+  tabSelector,
+  contentSelector,
+  activeClass,
+  display = "block"
+) => {
   // Получаем элемент заголовка табов, табы и контенты табов
   const header = document.querySelector(headerSelector)
   const tab = document.querySelectorAll(tabSelector)
@@ -17,7 +23,7 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
 
   // Функция для отображения контента выбранного таба и установки активного класса для таба
   const showTabContent = (index = 0) => {
-    content[index].style.display = "block"
+    content[index].style.display = display
     tab[index].classList.add(activeClass)
   }
 

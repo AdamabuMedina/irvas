@@ -50,6 +50,7 @@ const modals = () => {
     ".popup_engineer .popup_close"
   )
   bindModalEvents(".phone_link", ".popup", ".popup .popup_close")
+  bindModalEvents(".popup_calc_btn", ".popup_calc", ".popup_calc_close")
 
   // Показываем модальное окно после определенного времени
   // showModalByTime(".popup", 60000)
