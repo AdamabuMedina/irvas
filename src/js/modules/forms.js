@@ -1,4 +1,4 @@
-import checkNumInputs from "./utils"
+import { checkNumInputs } from "./utils"
 
 const forms = () => {
   const form = document.querySelectorAll("form")
